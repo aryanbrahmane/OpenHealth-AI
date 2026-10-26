@@ -2,31 +2,35 @@
 @import "tailwindcss";
 
 /* 
- * Vichy Clinical Modern Color Palette:
- * Soft Gray (#BBBFBF, #E5E7EB, #F3F4F6)
- * Crisp White (#FFFFFF)
- * Vibrant Teal (#05AD98, Hover: #048C7A, Glow: rgba(5, 173, 152, 0.25))
- * Deep Slate Gray (#878787, #4B5563, #1F2937, #111827)
+ * Precision Health Palette:
+ * Crisp White (#FFFFFF) & Pure Clinical Slate (#F8FAFC)
+ * Primary: Bio-Teal (#0D9488, Gradient to #0F766E)
+ * Standout Pop Accent: Energy Coral / Pulse Orange (#F97316 / #EA580C)
+ * Deep Anchor Navy: (#0F172A)
  */
 
 :root {
-  --teal: #05AD98;
-  --teal-hover: #048C7A;
-  --teal-light: #E6F7F5;
-  --teal-glow: rgba(5, 173, 152, 0.25);
+  --teal-primary: #0D9488;
+  --teal-dark: #0F766E;
+  --teal-light: #CCFBF1;
+  --teal-glow: rgba(13, 148, 136, 0.25);
   
-  --gray-soft: #BBBFBF;
-  --gray-mid: #878787;
-  --white: #FFFFFF;
-  --surface: #FFFFFF;
-  --surface-alt: #F9FAFB;
-  --surface-border: #E5E7EB;
+  --coral-pop: #F97316;
+  --coral-pop-hover: #EA580C;
+  --coral-light: #FFEDD5;
+  --coral-glow: rgba(249, 115, 22, 0.3);
 
-  --text-main: #111827;
-  --text-body: #374151;
-  --text-muted: #6B7280;
+  --slate-bg: #F8FAFC;
+  --surface-white: #FFFFFF;
+  --border-subtle: #E2E8F0;
+  --border-card: #CBD5E1;
+
+  --navy-dark: #0F172A;
+  --text-main: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
   
-  --success: #05AD98;
+  --success: #10B981;
   --warning: #F59E0B;
   --danger: #EF4444;
 }
@@ -52,77 +56,101 @@ input, select, textarea {
 
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #F8FAFB;
-  color: #1F2937;
+  background-color: #F8FAFC;
+  color: #0F172A;
   min-height: 100vh;
   line-height: 1.5;
   background-image: 
-    radial-gradient(circle at 15% 10%, rgba(5, 173, 152, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 85% 90%, rgba(187, 191, 191, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(5, 173, 152, 0.02) 0%, transparent 60%);
+    radial-gradient(circle at 15% 10%, rgba(13, 148, 136, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(249, 115, 22, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(13, 148, 136, 0.03) 0%, transparent 55%);
   background-attachment: fixed;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Modern Clean Glass & Card Panels */
+/* Dynamic Glass & Standout Shadow Panels */
 .glass-panel {
   background: #FFFFFF;
-  border: 1px solid #E5E7EB;
+  border: 1px solid #E2E8F0;
   border-radius: 20px;
-  box-shadow: 0 4px 20px -2px rgba(135, 135, 135, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-panel:hover {
-  border-color: #05AD98;
-  box-shadow: 0 12px 30px -4px rgba(5, 173, 152, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  border-color: #0D9488;
+  box-shadow: 0 16px 32px -4px rgba(13, 148, 136, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
 }
 
 .glass-card {
   background: #FFFFFF;
-  border: 1px solid #E5E7EB;
+  border: 1px solid #E2E8F0;
   border-radius: 14px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: all 0.2s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(5, 173, 152, 0.4);
+  border-color: rgba(13, 148, 136, 0.4);
 }
 
-/* Polished Pro Buttons */
+/* Standout High-Energy Primary Button (Vibrant Teal with Coral Focus) */
 .btn-primary {
-  background: #05AD98;
+  background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%);
   color: #FFFFFF;
-  padding: 0.7rem 1.4rem;
+  padding: 0.72rem 1.45rem;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.88rem;
   letter-spacing: -0.01em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 14px rgba(5, 173, 152, 0.25);
-  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .btn-primary:hover {
-  background: #048C7A;
+  background: linear-gradient(135deg, #0F766E 0%, #115E59 100%);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(5, 173, 152, 0.35);
+  box-shadow: 0 8px 22px rgba(13, 148, 136, 0.4);
+}
+
+/* Standout High-Energy Coral CTA Button */
+.btn-pop {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  color: #FFFFFF;
+  padding: 0.72rem 1.45rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-pop:hover {
+  background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.45);
 }
 
 .btn-secondary {
   background: #FFFFFF;
-  color: #374151;
-  padding: 0.7rem 1.25rem;
+  color: #1E293B;
+  padding: 0.72rem 1.25rem;
   border-radius: 12px;
   font-weight: 600;
   font-size: 0.88rem;
-  border: 1px solid #D1D5DB;
+  border: 1px solid #CBD5E1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -132,19 +160,19 @@ body {
 }
 
 .btn-secondary:hover {
-  background: #F3F4F6;
-  color: #111827;
-  border-color: #05AD98;
+  background: #F8FAFC;
+  color: #0F172A;
+  border-color: #0D9488;
 }
 
 /* Form Inputs */
 .form-input {
   width: 100%;
   background: #FFFFFF;
-  border: 1px solid #D1D5DB;
+  border: 1px solid #CBD5E1;
   border-radius: 10px;
   padding: 0.65rem 0.85rem;
-  color: #111827;
+  color: #0F172A;
   font-size: 0.9rem;
   transition: all 0.2s ease;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
@@ -152,9 +180,9 @@ body {
 
 .form-input:focus {
   outline: none;
-  border-color: #05AD98;
+  border-color: #0D9488;
   background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(5, 173, 152, 0.15);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
 }
 
 .form-label {
@@ -163,59 +191,48 @@ body {
   align-items: center;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #4B5563;
+  color: #334155;
   margin-bottom: 0.35rem;
 }
 
 .form-unit {
   font-size: 0.72rem;
-  color: #878787;
+  color: #64748B;
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Clean Chips & Badges */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 9999px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
+/* Preset Chips */
 .preset-chip {
   padding: 0.45rem 0.85rem;
   border-radius: 10px;
   font-size: 0.78rem;
   font-weight: 600;
-  background: #F3F4F6;
-  border: 1px solid #E5E7EB;
-  color: #4B5563;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  color: #334155;
   transition: all 0.2s ease;
 }
 
 .preset-chip:hover {
-  background: #E6F7F5;
-  color: #05AD98;
-  border-color: rgba(5, 173, 152, 0.4);
+  background: #CCFBF1;
+  color: #0F766E;
+  border-color: rgba(13, 148, 136, 0.4);
 }
 
 /* PACS Medical Radiology Canvas */
 .pacs-canvas {
-  background: #0D1117;
-  border: 2px solid #E5E7EB;
+  background: #020617;
+  border: 2px solid #0F172A;
   border-radius: 16px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
 }
 
 .pacs-crosshair {
   position: absolute;
   pointer-events: none;
-  border-color: rgba(5, 173, 152, 0.35);
+  border-color: rgba(13, 148, 136, 0.4);
 }
 
 /* Custom Scrollbars */
@@ -225,14 +242,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F3F4F6;
+  background: #F1F5F9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #BBBFBF;
+  background: #CBD5E1;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #878787;
+  background: #94A3B8;
 }

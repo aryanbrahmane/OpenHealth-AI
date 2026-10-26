@@ -8,7 +8,8 @@ import {
   Utensils, 
   Printer, 
   ChevronRight,
-  HeartPulse
+  HeartPulse,
+  Zap
 } from 'lucide-react';
 import RiskGauge from '../components/RiskGauge';
 import { fetchSchema, predictDisease } from '../services/api';
@@ -113,41 +114,48 @@ export default function Diagnostics({
       <div className="space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F7F5] border border-[#05AD98]/30 text-[#048C7A] text-xs font-semibold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CCFBF1] border border-[#0D9488]/30 text-[#0F766E] text-xs font-bold uppercase tracking-wider mb-2">
               <Stethoscope className="w-3.5 h-3.5" />
               Evidence-Based Diagnostic Screener
             </div>
-            <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               {currentDiseaseInfo?.name || 'Clinical Diagnostic Engine'}
             </h1>
-            <p className="text-sm text-gray-500 max-w-2xl">
+            <p className="text-sm text-slate-500 max-w-2xl">
               {currentDiseaseInfo?.description}
             </p>
           </div>
 
-          {/* Quick Case Presets */}
+          {/* Quick Case Presets with Standout Coral styling */}
           {Object.keys(presets).length > 0 && (
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-semibold text-gray-500 flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-[#05AD98]" />
+              <span className="text-xs font-bold text-slate-600 flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-[#F97316]" />
                 <span>Simulate Case:</span>
               </span>
-              {Object.keys(presets).map((pKey) => (
-                <button
-                  key={pKey}
-                  type="button"
-                  onClick={() => handleApplyPreset(pKey)}
-                  className="preset-chip"
-                >
-                  {pKey.replace('_', ' ').toUpperCase()}
-                </button>
-              ))}
+              {Object.keys(presets).map((pKey) => {
+                const isAcute = pKey.toLowerCase().includes('acute') || pKey.toLowerCase().includes('high');
+                return (
+                  <button
+                    key={pKey}
+                    type="button"
+                    onClick={() => handleApplyPreset(pKey)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase transition border ${
+                      isAcute
+                        ? 'bg-[#FFEDD5] text-[#C2410C] border-[#F97316]/40 hover:bg-[#FED7AA]'
+                        : 'preset-chip'
+                    }`}
+                  >
+                    {pKey.replace('_', ' ').toUpperCase()}
+                  </button>
+                );
+              })}
             </div>
           )}
         </div>
 
         {/* Disease Selection Tabs */}
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-gray-100 border border-gray-200 overflow-x-auto">
+        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 overflow-x-auto">
           {diseaseList.map((dKey) => {
             const isSel = activeDisease === dKey;
             const name = schemaData?.diseases?.[dKey]?.name || dKey;
@@ -157,8 +165,8 @@ export default function Diagnostics({
                 onClick={() => setActiveDisease(dKey)}
                 className={`px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                   isSel
-                    ? 'bg-[#05AD98] text-white shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+                    ? 'bg-[#0D9488] text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
                 }`}
               >
                 {name.replace(' Triage', '').replace(' Profile', '')}
@@ -180,15 +188,15 @@ export default function Diagnostics({
         {/* Left Form: Parameter Inputs */}
         <div className="lg:col-span-7 glass-panel p-6 lg:p-8 space-y-6">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
-              <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
-                <Activity className="w-4 h-4 text-[#05AD98]" />
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <Activity className="w-4 h-4 text-[#0D9488]" />
                 <span>Patient Biometric & Lab Parameters</span>
               </h3>
               <button
                 type="button"
                 onClick={() => initFormForDisease(activeDisease, schemaData?.diseases)}
-                className="text-xs text-gray-500 hover:text-[#05AD98] flex items-center gap-1 transition"
+                className="text-xs text-slate-500 hover:text-[#0D9488] flex items-center gap-1 transition"
               >
                 <RotateCcw className="w-3 h-3" />
                 <span>Reset</span>
@@ -224,9 +232,9 @@ export default function Diagnostics({
 
                 // Numeric Input with Reference Tag
                 return (
-                  <div key={field.key} className="p-3 rounded-xl bg-gray-50/80 border border-gray-200/80 space-y-1.5">
+                  <div key={field.key} className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5 focus-within:border-[#0D9488] transition">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-semibold text-gray-700 truncate" title={field.label}>
+                      <span className="font-semibold text-slate-700 truncate" title={field.label}>
                         {field.label}
                       </span>
                       <span className="form-unit text-[10px]">{field.unit}</span>
@@ -244,9 +252,9 @@ export default function Diagnostics({
                     />
 
                     {field.normal && (
-                      <div className="text-[10px] text-gray-500 font-mono flex items-center justify-between">
+                      <div className="text-[10px] text-slate-500 font-mono flex items-center justify-between">
                         <span>Ref Range:</span>
-                        <span className="text-[#048C7A] font-medium">{field.normal}</span>
+                        <span className="text-[#0F766E] font-medium">{field.normal}</span>
                       </div>
                     )}
                   </div>
@@ -254,11 +262,11 @@ export default function Diagnostics({
               })}
             </div>
 
-            <div className="pt-4 border-t border-gray-100 flex items-center justify-end">
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-end">
               <button
                 type="submit"
                 disabled={loading}
-                className="btn-primary w-full sm:w-auto"
+                className="btn-pop w-full sm:w-auto"
               >
                 {loading ? (
                   <>
@@ -267,7 +275,7 @@ export default function Diagnostics({
                   </>
                 ) : (
                   <>
-                    <Stethoscope className="w-4 h-4" />
+                    <Zap className="w-4 h-4" />
                     <span>Compute Diagnostic Assessment</span>
                   </>
                 )}
@@ -279,12 +287,12 @@ export default function Diagnostics({
         {/* Right Panel: Output Report */}
         <div className="lg:col-span-5 space-y-6">
           {result ? (
-            <div className="glass-panel p-6 space-y-6 border-[#05AD98]/40 bg-linear-to-br from-white to-[#E6F7F5]/30">
-              <div className="flex items-center justify-between pb-3 border-b border-gray-100">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#05AD98]">
+            <div className="glass-panel p-6 space-y-6 border-[#0D9488]/40 bg-linear-to-br from-white to-[#CCFBF1]/20 shadow-lg">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488]">
                   Diagnostic Evaluation Summary
                 </span>
-                <span className="text-xs font-mono text-gray-500">
+                <span className="text-xs font-mono text-slate-500 font-semibold">
                   Calibrated Random Forest
                 </span>
               </div>
@@ -297,15 +305,15 @@ export default function Diagnostics({
               />
 
               {/* Clinical Verdict */}
-              <div className="p-4 rounded-xl bg-white border border-gray-200 space-y-2 shadow-xs">
-                <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider block">
+              <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
+                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
                   Pathological Verdict
                 </span>
-                <p className="text-sm font-bold text-gray-900">
+                <p className="text-sm font-bold text-slate-900">
                   {result.clinical_verdict}
                 </p>
-                <div className="text-xs text-gray-600 pt-2 border-t border-gray-100">
-                  <span className="text-[#05AD98] font-bold">Triage Protocol: </span>
+                <div className="text-xs text-slate-600 pt-2 border-t border-slate-100">
+                  <span className="text-[#EA580C] font-bold">Triage Protocol: </span>
                   {result.triage_action}
                 </div>
               </div>
@@ -318,7 +326,7 @@ export default function Diagnostics({
                   className="btn-secondary text-xs w-full justify-between"
                 >
                   <span className="flex items-center gap-2">
-                    <Utensils className="w-3.5 h-3.5 text-[#05AD98]" />
+                    <Utensils className="w-3.5 h-3.5 text-[#0D9488]" />
                     <span>View Prescribed Dietary Plan</span>
                   </span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -327,7 +335,7 @@ export default function Diagnostics({
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="btn-secondary text-xs w-full justify-center text-gray-600 hover:text-gray-900"
+                  className="btn-secondary text-xs w-full justify-center text-slate-600 hover:text-slate-900"
                 >
                   <Printer className="w-3.5 h-3.5" />
                   <span>Print Clinical Assessment Summary</span>
@@ -336,13 +344,13 @@ export default function Diagnostics({
             </div>
           ) : (
             <div className="glass-panel p-8 text-center space-y-4">
-              <div className="w-14 h-14 mx-auto rounded-2xl bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98]">
+              <div className="w-14 h-14 mx-auto rounded-2xl bg-[#CCFBF1] border border-[#0D9488]/30 flex items-center justify-center text-[#0D9488]">
                 <HeartPulse className="w-7 h-7" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900">Ready for Biometric Evaluation</h3>
-              <p className="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed">
+              <h3 className="text-lg font-bold text-slate-900">Ready for Biometric Evaluation</h3>
+              <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
                 Adjust clinical biomarker sliders on the left or click any patient case preset above,
-                then click <strong className="text-[#05AD98]">Compute Diagnostic Assessment</strong>.
+                then click <strong className="text-[#EA580C]">Compute Diagnostic Assessment</strong>.
               </p>
             </div>
           )}

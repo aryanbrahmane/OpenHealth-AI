@@ -4,7 +4,9 @@ import {
   ShieldCheck, 
   User, 
   Bot, 
-  RotateCcw
+  RotateCcw,
+  Sparkles,
+  Zap
 } from 'lucide-react';
 import { sendChatMessage } from '../services/api';
 
@@ -55,26 +57,26 @@ export default function ClinicalBot() {
     const lines = text.split('\n');
     return lines.map((line, idx) => {
       if (line.startsWith('### ')) {
-        return <h4 key={idx} className="text-base font-bold text-[#048C7A] mt-2 mb-1">{line.replace('### ', '')}</h4>;
+        return <h4 key={idx} className="text-base font-extrabold text-[#0D9488] mt-2 mb-1">{line.replace('### ', '')}</h4>;
       }
       if (line.startsWith('**') && line.endsWith('**')) {
-        return <p key={idx} className="font-bold text-gray-900 mt-1.5">{line.replace(/\*\*/g, '')}</p>;
+        return <p key={idx} className="font-bold text-slate-900 mt-1.5">{line.replace(/\*\*/g, '')}</p>;
       }
       if (line.startsWith('• ') || line.startsWith('- ')) {
         return (
-          <li key={idx} className="ml-4 list-disc text-gray-700 text-xs leading-relaxed my-0.5">
+          <li key={idx} className="ml-4 list-disc text-slate-700 text-xs leading-relaxed my-0.5">
             {line.replace(/^[•\-]\s*/, '')}
           </li>
         );
       }
       if (line.startsWith('> ')) {
         return (
-          <blockquote key={idx} className="border-l-2 border-[#05AD98] pl-3 italic text-gray-500 text-[11px] my-2">
+          <blockquote key={idx} className="border-l-3 border-[#F97316] pl-3 italic text-slate-600 text-[11px] my-2 bg-orange-50/50 py-1 rounded-r">
             {line.replace('> ', '')}
           </blockquote>
         );
       }
-      return <p key={idx} className="text-xs text-gray-700 leading-relaxed my-1">{line}</p>;
+      return <p key={idx} className="text-xs text-slate-700 leading-relaxed my-1">{line}</p>;
     });
   };
 
@@ -83,14 +85,14 @@ export default function ClinicalBot() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F7F5] border border-[#05AD98]/30 text-[#048C7A] text-xs font-semibold uppercase tracking-wider mb-2">
-            <ShieldCheck className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CCFBF1] border border-[#0D9488]/30 text-[#0F766E] text-xs font-bold uppercase tracking-wider mb-2">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#0D9488]" />
             Verified Offline Clinical Knowledge Base
           </div>
-          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
             Medical AI Assistant
           </h1>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-slate-500">
             Instantaneous evidence-based answers with zero external cloud dependencies.
           </p>
         </div>
@@ -102,14 +104,17 @@ export default function ClinicalBot() {
           }])}
           className="btn-secondary text-xs w-fit"
         >
-          <RotateCcw className="w-3.5 h-3.5 text-gray-500" />
+          <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
           <span>Clear Chat</span>
         </button>
       </div>
 
-      {/* Quick Question Chips */}
+      {/* Quick Question Chips with Standout Accents */}
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-xs font-semibold text-gray-500">Suggested Inquiries:</span>
+        <span className="text-xs font-bold text-slate-600 flex items-center gap-1">
+          <Sparkles className="w-3.5 h-3.5 text-[#F97316]" />
+          <span>Suggested Inquiries:</span>
+        </span>
         {[
           "What are the diagnostic benchmarks for diabetes & HbA1c?",
           "How can I protect renal function & creatinine?",
@@ -120,7 +125,7 @@ export default function ClinicalBot() {
           <button
             key={idx}
             onClick={() => handleQuickQuestion(q)}
-            className="preset-chip text-[11px]"
+            className="preset-chip text-[11px] hover:border-[#0D9488]"
           >
             {q.split('?')[0].replace('What are the ', '').replace('Explain how ', '')}?
           </button>
@@ -128,7 +133,7 @@ export default function ClinicalBot() {
       </div>
 
       {/* Chat Container */}
-      <div className="glass-panel p-6 flex flex-col h-[520px] bg-white">
+      <div className="glass-panel p-6 flex flex-col h-[520px] bg-white shadow-md border-slate-200">
         {/* Messages Thread */}
         <div className="flex-1 overflow-y-auto space-y-4 pr-2">
           {messages.map((m, idx) => (
@@ -139,7 +144,7 @@ export default function ClinicalBot() {
               }`}
             >
               {m.sender === 'bot' && (
-                <div className="w-8 h-8 rounded-lg bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98] shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-lg bg-linear-to-tr from-[#0D9488] to-[#0F766E] shadow-sm flex items-center justify-center text-white shrink-0 mt-1">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
@@ -147,19 +152,19 @@ export default function ClinicalBot() {
               <div
                 className={`max-w-[85%] rounded-2xl p-4 text-xs ${
                   m.sender === 'user'
-                    ? 'bg-[#05AD98] text-white rounded-br-none shadow-sm'
-                    : 'bg-gray-50 border border-gray-200 text-gray-800 rounded-bl-none shadow-2xs'
+                    ? 'bg-linear-to-r from-[#F97316] to-[#EA580C] text-white rounded-br-none shadow-md shadow-[#F97316]/25 font-medium'
+                    : 'bg-slate-50 border border-slate-200 text-slate-800 rounded-bl-none shadow-xs'
                 }`}
               >
                 {m.sender === 'user' ? (
-                  <p className="text-sm font-medium">{m.text}</p>
+                  <p className="text-sm font-semibold">{m.text}</p>
                 ) : (
                   <div>{formatBotText(m.text)}</div>
                 )}
               </div>
 
               {m.sender === 'user' && (
-                <div className="w-8 h-8 rounded-lg bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-700 shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-white shrink-0 mt-1 shadow-xs">
                   <User className="w-4 h-4" />
                 </div>
               )}
@@ -168,11 +173,11 @@ export default function ClinicalBot() {
 
           {loading && (
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98] shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-linear-to-tr from-[#0D9488] to-[#0F766E] flex items-center justify-center text-white shrink-0">
                 <Bot className="w-4 h-4" />
               </div>
-              <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-xs text-gray-500 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#05AD98] animate-pulse" />
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-500 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#F97316] animate-pulse" />
                 <span>Consulting local clinical intelligence knowledge base...</span>
               </div>
             </div>
@@ -181,7 +186,7 @@ export default function ClinicalBot() {
         </div>
 
         {/* Query Input Bar */}
-        <form onSubmit={handleSend} className="mt-4 pt-3 border-t border-gray-100 flex gap-2">
+        <form onSubmit={handleSend} className="mt-4 pt-3 border-t border-slate-100 flex gap-2">
           <input
             type="text"
             value={inputQuery}
@@ -192,7 +197,7 @@ export default function ClinicalBot() {
           <button
             type="submit"
             disabled={loading || !inputQuery.trim()}
-            className="btn-primary px-5 shrink-0"
+            className="btn-pop px-5 shrink-0"
           >
             <Send className="w-4 h-4" />
             <span className="hidden sm:inline">Send Query</span>
@@ -200,7 +205,7 @@ export default function ClinicalBot() {
         </form>
       </div>
 
-      <div className="text-center text-[11px] text-gray-400">
+      <div className="text-center text-[11px] text-slate-400">
         Local clinical Q&A database &bull; Zero external API / Gemini keys required &bull; Formatted for educational & triage research
       </div>
     </div>

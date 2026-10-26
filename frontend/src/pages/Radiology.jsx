@@ -5,7 +5,8 @@ import {
   AlertTriangle, 
   Layers, 
   Eye, 
-  RefreshCw
+  RefreshCw,
+  Sparkles
 } from 'lucide-react';
 import { analyzeMri, analyzeXray, fetchSamples } from '../services/api';
 
@@ -107,26 +108,26 @@ export default function Radiology() {
       {/* Header & Modality Switch */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F7F5] border border-[#05AD98]/30 text-[#048C7A] text-xs font-semibold uppercase tracking-wider mb-2">
-            <Scan className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CCFBF1] border border-[#0D9488]/30 text-[#0F766E] text-xs font-bold uppercase tracking-wider mb-2">
+            <Scan className="w-3.5 h-3.5 text-[#F97316]" />
             PACS Medical Radiology Triage
           </div>
-          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
             Radiological Imaging & Computer Vision
           </h1>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-slate-500">
             Intra-parenchymal focal mass localization, bilateral hemispheric asymmetry, and pulmonary consolidation.
           </p>
         </div>
 
         {/* Modality Selector */}
-        <div className="flex items-center p-1 rounded-xl bg-gray-100 border border-gray-200 w-fit">
+        <div className="flex items-center p-1 rounded-xl bg-slate-100 border border-slate-200 w-fit">
           <button
             onClick={() => handleSwitchModality('brain_mri')}
             className={`px-4 py-2 rounded-lg text-xs font-bold transition ${
               modality === 'brain_mri'
-                ? 'bg-[#05AD98] text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-[#0D9488] text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             Brain MRI Studio
@@ -135,8 +136,8 @@ export default function Radiology() {
             onClick={() => handleSwitchModality('chest_xray')}
             className={`px-4 py-2 rounded-lg text-xs font-bold transition ${
               modality === 'chest_xray'
-                ? 'bg-[#05AD98] text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-[#0D9488] text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             Chest X-Ray Triage
@@ -156,23 +157,23 @@ export default function Radiology() {
         {/* Left: PACS Viewer Canvas */}
         <div className="lg:col-span-7 space-y-6">
           <div className="glass-panel p-6 space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
-              <span className="text-sm font-bold text-gray-900 flex items-center gap-2">
-                <Eye className="w-4 h-4 text-[#05AD98]" />
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <span className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <Eye className="w-4 h-4 text-[#0D9488]" />
                 <span>PACS Workstation Viewer</span>
-                <span className="text-[10px] text-gray-400 font-mono">DICOM/256px</span>
+                <span className="text-[10px] text-slate-400 font-mono">DICOM/256px</span>
               </span>
 
               {/* Windowing Filter Controls */}
               <div className="flex items-center gap-1.5 text-xs">
-                <span className="text-gray-500 text-[11px] mr-1">Window:</span>
+                <span className="text-slate-500 text-[11px] mr-1">Window:</span>
                 <button
                   type="button"
                   onClick={() => setFilterMode('normal')}
-                  className={`px-2.5 py-1 rounded-md text-[11px] font-semibold border ${
+                  className={`px-2.5 py-1 rounded-md text-[11px] font-bold border ${
                     filterMode === 'normal'
-                      ? 'bg-[#05AD98] text-white border-[#05AD98]'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                      ? 'bg-[#0D9488] text-white border-[#0D9488]'
+                      : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300'
                   }`}
                 >
                   Raw
@@ -180,10 +181,10 @@ export default function Radiology() {
                 <button
                   type="button"
                   onClick={() => setFilterMode('contrast')}
-                  className={`px-2.5 py-1 rounded-md text-[11px] font-semibold border ${
+                  className={`px-2.5 py-1 rounded-md text-[11px] font-bold border ${
                     filterMode === 'contrast'
-                      ? 'bg-[#05AD98] text-white border-[#05AD98]'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                      ? 'bg-[#0D9488] text-white border-[#0D9488]'
+                      : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300'
                   }`}
                 >
                   Contrast
@@ -191,10 +192,10 @@ export default function Radiology() {
                 <button
                   type="button"
                   onClick={() => setFilterMode('invert')}
-                  className={`px-2.5 py-1 rounded-md text-[11px] font-semibold border ${
+                  className={`px-2.5 py-1 rounded-md text-[11px] font-bold border ${
                     filterMode === 'invert'
-                      ? 'bg-[#05AD98] text-white border-[#05AD98]'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                      ? 'bg-[#0D9488] text-white border-[#0D9488]'
+                      : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300'
                   }`}
                 >
                   Invert
@@ -212,32 +213,35 @@ export default function Radiology() {
                   className="max-h-full max-w-full object-contain select-none"
                 />
               ) : (
-                <div className="text-center p-8 text-gray-400">
-                  <Scan className="w-12 h-12 mx-auto mb-2 opacity-40 text-gray-400" />
+                <div className="text-center p-8 text-slate-400">
+                  <Scan className="w-12 h-12 mx-auto mb-2 opacity-40 text-slate-400" />
                   <span>No scan loaded</span>
                 </div>
               )}
 
               {/* Radiological Orientation Tags */}
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[11px] font-mono font-bold text-gray-400 bg-black/70 px-1.5 py-0.5 rounded border border-white/10">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[11px] font-mono font-bold text-slate-300 bg-black/80 px-1.5 py-0.5 rounded border border-white/20">
                 R
               </span>
-              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-mono font-bold text-gray-400 bg-black/70 px-1.5 py-0.5 rounded border border-white/10">
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-mono font-bold text-slate-300 bg-black/80 px-1.5 py-0.5 rounded border border-white/20">
                 L
               </span>
 
-              {/* Crosshair Overlay */}
+              {/* Crosshair Overlay with Soft Glow */}
               <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-0 right-0 h-px bg-[#05AD98]/30" />
-                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#05AD98]/30" />
+                <div className="absolute top-1/2 left-0 right-0 h-px bg-[#0D9488]/40 shadow-xs shadow-[#0D9488]" />
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#0D9488]/40 shadow-xs shadow-[#0D9488]" />
               </div>
             </div>
 
             {/* Verified Clinical Samples */}
             <div className="space-y-3 pt-2">
-              <div className="text-xs font-semibold text-gray-700 flex items-center justify-between">
-                <span>Verified Clinical Reference Scans:</span>
-                <span className="text-[10px] text-gray-400 font-mono">1-Click Triage</span>
+              <div className="text-xs font-bold text-slate-700 flex items-center justify-between">
+                <span className="flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#F97316]" />
+                  <span>Verified Clinical Reference Scans:</span>
+                </span>
+                <span className="text-[10px] text-slate-400 font-mono">1-Click Triage</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -247,16 +251,16 @@ export default function Radiology() {
                     onClick={() => handleSelectSample(s)}
                     className={`rounded-xl p-2.5 text-left border transition flex items-center gap-3 ${
                       selectedSample === s.filename
-                        ? 'border-[#05AD98] bg-[#E6F7F5] shadow-xs'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                        ? 'border-[#0D9488] bg-[#CCFBF1] shadow-xs ring-1 ring-[#0D9488]/30'
+                        : 'border-slate-200 hover:border-slate-300 bg-white'
                     }`}
                   >
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-black border border-gray-200">
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-black border border-slate-200">
                       <img src={s.url} alt={s.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="overflow-hidden">
-                      <span className="text-xs font-bold text-gray-900 block truncate">{s.name}</span>
-                      <span className="text-[10px] text-[#05AD98] font-mono block truncate font-medium">{s.finding || 'Verified'}</span>
+                      <span className="text-xs font-bold text-slate-900 block truncate">{s.name}</span>
+                      <span className="text-[10px] text-[#0D9488] font-mono block truncate font-bold">{s.finding || 'Verified'}</span>
                     </div>
                   </button>
                 ))}
@@ -264,8 +268,8 @@ export default function Radiology() {
 
               {/* Custom File Upload */}
               <div className="pt-2">
-                <label className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-dashed border-gray-300 hover:border-[#05AD98] cursor-pointer text-xs font-semibold text-gray-600 hover:text-[#05AD98] transition bg-gray-50/50">
-                  <Upload className="w-4 h-4 text-[#05AD98]" />
+                <label className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-dashed border-slate-300 hover:border-[#0D9488] cursor-pointer text-xs font-semibold text-slate-600 hover:text-[#0D9488] transition bg-slate-50/50">
+                  <Upload className="w-4 h-4 text-[#0D9488]" />
                   <span>{selectedFile ? selectedFile.name : `Or Upload Custom ${modality === 'chest_xray' ? 'Chest X-Ray' : 'Brain MRI'} (JPG / PNG)`}</span>
                   <input
                     type="file"
@@ -280,16 +284,16 @@ export default function Radiology() {
             <button
               onClick={handleRunAnalysis}
               disabled={loading}
-              className="btn-primary w-full"
+              className="btn-pop w-full text-base py-3.5 shadow-md shadow-[#F97316]/20"
             >
               {loading ? (
                 <>
-                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  <RefreshCw className="w-5 h-5 animate-spin" />
                   <span>Computing Morphological & Lesion Analysis...</span>
                 </>
               ) : (
                 <>
-                  <Scan className="w-4 h-4" />
+                  <Scan className="w-5 h-5" />
                   <span>Run Radiological Triage</span>
                 </>
               )}
@@ -300,66 +304,73 @@ export default function Radiology() {
         {/* Right: Hospital-Grade Radiology Report */}
         <div className="lg:col-span-5 space-y-6">
           {result ? (
-            <div className="glass-panel p-6 space-y-6 border-[#05AD98]/30 bg-linear-to-br from-white to-[#E6F7F5]/30">
-              <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+            <div className="glass-panel p-6 space-y-6 border-[#0D9488]/30 bg-linear-to-br from-white to-[#CCFBF1]/25 shadow-lg">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#05AD98] block">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488] block">
                     Radiological Assessment Report
                   </span>
-                  <span className="text-[10px] text-gray-500 font-mono">
+                  <span className="text-[10px] text-slate-500 font-mono">
                     Protocol: {result.modality}
                   </span>
                 </div>
                 <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${
                   result.prediction.includes('Normal') || result.prediction === 'No Tumour'
-                    ? 'bg-[#E6F7F5] text-[#048C7A] border-[#05AD98]/30'
-                    : 'bg-rose-50 text-rose-700 border-rose-200'
+                    ? 'bg-[#CCFBF1] text-[#0F766E] border-[#0D9488]/30'
+                    : 'bg-[#FFEDD5] text-[#C2410C] border-[#F97316]/30'
                 }`}>
                   {result.severity}
                 </span>
               </div>
 
               {/* Primary Diagnostic Finding */}
-              <div className="p-4 rounded-xl bg-white border border-gray-200 space-y-2 shadow-xs">
-                <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider block">
+              <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
+                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
                   Impression & Diagnosis
                 </span>
-                <div className="text-2xl font-black text-gray-900 tracking-tight">
+                <div className="text-2xl font-black text-slate-900 tracking-tight">
                   {result.prediction}
                 </div>
-                <div className="text-xs font-semibold text-[#05AD98] font-mono">
+                <div className="text-xs font-bold text-[#EA580C] font-mono">
                   Confidence Score: {result.confidence}%
                 </div>
-                <p className="text-xs text-gray-600 leading-relaxed pt-2 border-t border-gray-100">
+                <p className="text-xs text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
                   {result.description}
                 </p>
               </div>
 
               {/* Softmax Probability Bars */}
               {result.probabilities && Object.keys(result.probabilities).length > 0 && (
-                <div className="space-y-3 p-4 rounded-xl bg-white border border-gray-200 shadow-xs">
-                  <div className="text-xs font-bold text-gray-800 uppercase tracking-wider">
+                <div className="space-y-3 p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
+                  <div className="text-xs font-bold text-slate-800 uppercase tracking-wider">
                     Probability Distribution (Softmax):
                   </div>
                   <div className="space-y-2">
-                    {Object.entries(result.probabilities).map(([cls, prob]) => (
-                      <div key={cls} className="space-y-1">
-                        <div className="flex justify-between text-xs font-medium">
-                          <span className={cls === result.prediction || result.prediction.includes(cls) ? 'text-[#05AD98] font-bold' : 'text-gray-600'}>
-                            {cls}
-                          </span>
-                          <span className="font-mono text-gray-600 font-semibold">{prob}%</span>
+                    {Object.entries(result.probabilities).map(([cls, prob]) => {
+                      const isChosen = cls === result.prediction || result.prediction.includes(cls);
+                      return (
+                        <div key={cls} className="space-y-1">
+                          <div className="flex justify-between text-xs font-medium">
+                            <span className={isChosen ? 'text-[#0D9488] font-black' : 'text-slate-600'}>
+                              {cls}
+                            </span>
+                            <span className={`font-mono font-bold ${isChosen ? 'text-[#EA580C]' : 'text-slate-500'}`}>
+                              {prob}%
+                            </span>
+                          </div>
+                          <div className="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden">
+                            <div
+                              className={`h-full rounded-full transition-all duration-700 ${
+                                isChosen 
+                                  ? 'bg-linear-to-r from-[#0D9488] to-[#F97316]' 
+                                  : 'bg-slate-300'
+                              }`}
+                              style={{ width: `${prob}%` }}
+                            />
+                          </div>
                         </div>
-                        <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
-                          <div
-                            className={`h-full rounded-full transition-all duration-700 ${
-                              cls === result.prediction || result.prediction.includes(cls) ? 'bg-[#05AD98]' : 'bg-[#BBBFBF]'
-                            }`}
-                            style={{ width: `${prob}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -367,46 +378,46 @@ export default function Radiology() {
               {/* Quantitative Biometrics */}
               <div className="grid grid-cols-2 gap-3 text-xs">
                 {result.asymmetry_index !== undefined && (
-                  <div className="p-3 rounded-lg bg-white border border-gray-200 shadow-xs">
-                    <span className="text-gray-500 block mb-0.5">Bilateral Asymmetry</span>
-                    <span className="font-bold font-mono text-gray-900 text-sm">{result.asymmetry_index}%</span>
+                  <div className="p-3 rounded-lg bg-white border border-slate-200 shadow-xs">
+                    <span className="text-slate-500 block mb-0.5">Bilateral Asymmetry</span>
+                    <span className="font-bold font-mono text-slate-900 text-sm">{result.asymmetry_index}%</span>
                   </div>
                 )}
                 {result.contrast_ratio !== undefined && (
-                  <div className="p-3 rounded-lg bg-white border border-gray-200 shadow-xs">
-                    <span className="text-gray-500 block mb-0.5">Tissue Variance</span>
-                    <span className="font-bold font-mono text-gray-900 text-sm">{result.contrast_ratio}%</span>
+                  <div className="p-3 rounded-lg bg-white border border-slate-200 shadow-xs">
+                    <span className="text-slate-500 block mb-0.5">Tissue Variance</span>
+                    <span className="font-bold font-mono text-slate-900 text-sm">{result.contrast_ratio}%</span>
                   </div>
                 )}
                 {result.opacity_score !== undefined && (
-                  <div className="p-3 rounded-lg bg-white border border-gray-200 shadow-xs">
-                    <span className="text-gray-500 block mb-0.5">Lobar Opacity</span>
-                    <span className="font-bold font-mono text-gray-900 text-sm">{result.opacity_score}%</span>
+                  <div className="p-3 rounded-lg bg-white border border-slate-200 shadow-xs">
+                    <span className="text-slate-500 block mb-0.5">Lobar Opacity</span>
+                    <span className="font-bold font-mono text-slate-900 text-sm">{result.opacity_score}%</span>
                   </div>
                 )}
                 {result.subtype && (
-                  <div className="p-3 rounded-lg bg-white border border-gray-200 shadow-xs">
-                    <span className="text-gray-500 block mb-0.5">Consolidation Subtype</span>
-                    <span className="font-bold font-mono text-[#05AD98] text-xs truncate block">{result.subtype}</span>
+                  <div className="p-3 rounded-lg bg-white border border-slate-200 shadow-xs">
+                    <span className="text-slate-500 block mb-0.5">Consolidation Subtype</span>
+                    <span className="font-bold font-mono text-[#0D9488] text-xs truncate block">{result.subtype}</span>
                   </div>
                 )}
               </div>
 
               {/* Clinical Next Step */}
-              <div className="p-4 rounded-xl bg-[#E6F7F5] border border-[#05AD98]/30 text-xs space-y-1">
-                <span className="font-bold text-[#048C7A] block">Radiological Recommendation:</span>
-                <p className="text-gray-700 leading-relaxed">{result.action}</p>
+              <div className="p-4 rounded-xl bg-[#CCFBF1]/70 border border-[#0D9488]/30 text-xs space-y-1">
+                <span className="font-bold text-[#0F766E] block">Radiological Recommendation:</span>
+                <p className="text-slate-700 leading-relaxed">{result.action}</p>
               </div>
             </div>
           ) : (
             <div className="glass-panel p-8 text-center space-y-4">
-              <div className="w-14 h-14 mx-auto rounded-2xl bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98]">
+              <div className="w-14 h-14 mx-auto rounded-2xl bg-[#CCFBF1] border border-[#0D9488]/30 flex items-center justify-center text-[#0D9488]">
                 <Layers className="w-7 h-7" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900">Scan Awaiting Triage</h3>
-              <p className="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed">
+              <h3 className="text-lg font-bold text-slate-900">Scan Awaiting Triage</h3>
+              <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
                 Click any of the verified clinical sample scans or upload your own, then click
-                <strong className="text-[#05AD98]"> Run Radiological Triage</strong> to compute lesion biometrics.
+                <strong className="text-[#EA580C]"> Run Radiological Triage</strong> to compute lesion biometrics.
               </p>
             </div>
           )}
