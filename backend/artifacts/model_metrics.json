@@ -1,0 +1,256 @@
+{
+    "diabetes": {
+        "accuracy": 75.32,
+        "precision": 74.65,
+        "recall": 75.32,
+        "f1_score": 74.48,
+        "confusion_matrix": [
+            [
+                87,
+                13
+            ],
+            [
+                25,
+                29
+            ]
+        ],
+        "feature_names": [
+            "Pregnancies",
+            "Glucose",
+            "BloodPressure",
+            "SkinThickness",
+            "Insulin",
+            "BMI",
+            "DiabetesPedigreeFunction",
+            "Age"
+        ],
+        "feature_importance": {
+            "Pregnancies": 6.65,
+            "Glucose": 34.23,
+            "BloodPressure": 4.96,
+            "SkinThickness": 5.76,
+            "Insulin": 9.92,
+            "BMI": 17.44,
+            "DiabetesPedigreeFunction": 9.66,
+            "Age": 11.37
+        },
+        "model_type": "RandomForestClassifier",
+        "dataset_samples": 770
+    },
+    "heart": {
+        "accuracy": 83.61,
+        "precision": 85.83,
+        "recall": 83.61,
+        "f1_score": 83.13,
+        "confusion_matrix": [
+            [
+                19,
+                9
+            ],
+            [
+                1,
+                32
+            ]
+        ],
+        "feature_names": [
+            "age",
+            "sex",
+            "cp",
+            "trestbps",
+            "chol",
+            "fbs",
+            "restecg",
+            "thalach",
+            "exang",
+            "oldpeak",
+            "slope",
+            "ca",
+            "thal"
+        ],
+        "feature_importance": {
+            "age": 7.14,
+            "sex": 2.88,
+            "cp": 16.31,
+            "trestbps": 6.36,
+            "chol": 7.1,
+            "fbs": 0.65,
+            "restecg": 1.73,
+            "thalach": 10.62,
+            "exang": 7.16,
+            "oldpeak": 10.71,
+            "slope": 5.75,
+            "ca": 9.42,
+            "thal": 14.17
+        },
+        "model_type": "RandomForestClassifier",
+        "dataset_samples": 305
+    },
+    "parkinsons": {
+        "accuracy": 92.31,
+        "precision": 93.03,
+        "recall": 92.31,
+        "f1_score": 91.82,
+        "confusion_matrix": [
+            [
+                7,
+                3
+            ],
+            [
+                0,
+                29
+            ]
+        ],
+        "feature_names": [
+            "MDVP:Fo(Hz)",
+            "MDVP:Fhi(Hz)",
+            "MDVP:Flo(Hz)",
+            "MDVP:Jitter(%)",
+            "RPDE",
+            "DFA",
+            "spread2",
+            "D2"
+        ],
+        "feature_importance": {
+            "MDVP:Fo(Hz)": 17.52,
+            "MDVP:Fhi(Hz)": 13.66,
+            "MDVP:Flo(Hz)": 19.82,
+            "MDVP:Jitter(%)": 12.9,
+            "RPDE": 6.79,
+            "DFA": 5.83,
+            "spread2": 10.8,
+            "D2": 12.67
+        },
+        "model_type": "RandomForestClassifier",
+        "dataset_samples": 195
+    },
+    "bcancer": {
+        "accuracy": 95.61,
+        "precision": 95.65,
+        "recall": 95.61,
+        "f1_score": 95.62,
+        "confusion_matrix": [
+            [
+                40,
+                2
+            ],
+            [
+                3,
+                69
+            ]
+        ],
+        "feature_names": [
+            "mean radius",
+            "mean texture",
+            "mean perimeter",
+            "mean area",
+            "mean smoothness",
+            "mean compactness",
+            "mean concavity",
+            "mean concave points",
+            "mean symmetry",
+            "mean fractal dimension"
+        ],
+        "feature_importance": {
+            "mean radius": 10.61,
+            "mean texture": 5.54,
+            "mean perimeter": 15.45,
+            "mean area": 16.32,
+            "mean smoothness": 2.81,
+            "mean compactness": 4.81,
+            "mean concavity": 12.08,
+            "mean concave points": 29.25,
+            "mean symmetry": 1.85,
+            "mean fractal dimension": 1.29
+        },
+        "model_type": "RandomForestClassifier",
+        "dataset_samples": 570
+    },
+    "liver": {
+        "accuracy": 72.65,
+        "precision": 77.58,
+        "recall": 72.65,
+        "f1_score": 73.8,
+        "confusion_matrix": [
+            [
+                26,
+                8
+            ],
+            [
+                24,
+                59
+            ]
+        ],
+        "feature_names": [
+            "Age",
+            "Gender",
+            "Total_Bilirubin",
+            "Direct_Bilirubin",
+            "Alkaline_Phosphotase",
+            "Alamine_Aminotransferase",
+            "Aspartate_Aminotransferase",
+            "Total_Protiens",
+            "Albumin",
+            "Albumin_and_Globulin_Ratio"
+        ],
+        "feature_importance": {
+            "Age": 11.18,
+            "Gender": 0.73,
+            "Total_Bilirubin": 13.88,
+            "Direct_Bilirubin": 11.29,
+            "Alkaline_Phosphotase": 17.04,
+            "Alamine_Aminotransferase": 12.35,
+            "Aspartate_Aminotransferase": 14.3,
+            "Total_Protiens": 6.39,
+            "Albumin": 7.64,
+            "Albumin_and_Globulin_Ratio": 5.19
+        },
+        "model_type": "RandomForestClassifier",
+        "dataset_samples": 585
+    },
+    "kidney": {
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1_score": 100.0,
+        "confusion_matrix": [
+            [
+                30,
+                0
+            ],
+            [
+                0,
+                50
+            ]
+        ],
+        "feature_names": [
+            "age",
+            "bp",
+            "sg",
+            "al",
+            "su",
+            "bgr",
+            "bu",
+            "sc",
+            "hemo",
+            "pcv",
+            "htn",
+            "dm"
+        ],
+        "feature_importance": {
+            "age": 1.04,
+            "bp": 1.47,
+            "sg": 14.38,
+            "al": 5.36,
+            "su": 0.79,
+            "bgr": 2.03,
+            "bu": 2.85,
+            "sc": 16.08,
+            "hemo": 27.71,
+            "pcv": 20.35,
+            "htn": 3.17,
+            "dm": 4.76
+        },
+        "model_type": "RandomForestClassifier",
+        "dataset_samples": 400
+    }
+}
