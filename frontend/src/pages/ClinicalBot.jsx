@@ -52,30 +52,29 @@ export default function ClinicalBot() {
   };
 
   const formatBotText = (text) => {
-    // Render markdown headings, bold, bullet points cleanly
     const lines = text.split('\n');
     return lines.map((line, idx) => {
       if (line.startsWith('### ')) {
-        return <h4 key={idx} className="text-base font-bold text-sky-300 mt-2 mb-1">{line.replace('### ', '')}</h4>;
+        return <h4 key={idx} className="text-base font-bold text-[#048C7A] mt-2 mb-1">{line.replace('### ', '')}</h4>;
       }
       if (line.startsWith('**') && line.endsWith('**')) {
-        return <p key={idx} className="font-bold text-white mt-1.5">{line.replace(/\*\*/g, '')}</p>;
+        return <p key={idx} className="font-bold text-gray-900 mt-1.5">{line.replace(/\*\*/g, '')}</p>;
       }
       if (line.startsWith('• ') || line.startsWith('- ')) {
         return (
-          <li key={idx} className="ml-4 list-disc text-slate-300 text-xs leading-relaxed my-0.5">
+          <li key={idx} className="ml-4 list-disc text-gray-700 text-xs leading-relaxed my-0.5">
             {line.replace(/^[•\-]\s*/, '')}
           </li>
         );
       }
       if (line.startsWith('> ')) {
         return (
-          <blockquote key={idx} className="border-l-2 border-sky-500 pl-3 italic text-slate-400 text-[11px] my-2">
+          <blockquote key={idx} className="border-l-2 border-[#05AD98] pl-3 italic text-gray-500 text-[11px] my-2">
             {line.replace('> ', '')}
           </blockquote>
         );
       }
-      return <p key={idx} className="text-xs text-slate-300 leading-relaxed my-1">{line}</p>;
+      return <p key={idx} className="text-xs text-gray-700 leading-relaxed my-1">{line}</p>;
     });
   };
 
@@ -84,14 +83,14 @@ export default function ClinicalBot() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F7F5] border border-[#05AD98]/30 text-[#048C7A] text-xs font-semibold uppercase tracking-wider mb-2">
             <ShieldCheck className="w-3.5 h-3.5" />
             Verified Offline Clinical Knowledge Base
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
             Medical AI Assistant
           </h1>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-gray-500">
             Instantaneous evidence-based answers with zero external cloud dependencies.
           </p>
         </div>
@@ -103,14 +102,14 @@ export default function ClinicalBot() {
           }])}
           className="btn-secondary text-xs w-fit"
         >
-          <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
+          <RotateCcw className="w-3.5 h-3.5 text-gray-500" />
           <span>Clear Chat</span>
         </button>
       </div>
 
       {/* Quick Question Chips */}
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-xs font-semibold text-slate-400">Suggested Inquiries:</span>
+        <span className="text-xs font-semibold text-gray-500">Suggested Inquiries:</span>
         {[
           "What are the diagnostic benchmarks for diabetes & HbA1c?",
           "How can I protect renal function & creatinine?",
@@ -129,7 +128,7 @@ export default function ClinicalBot() {
       </div>
 
       {/* Chat Container */}
-      <div className="glass-panel p-6 flex flex-col h-[520px]">
+      <div className="glass-panel p-6 flex flex-col h-[520px] bg-white">
         {/* Messages Thread */}
         <div className="flex-1 overflow-y-auto space-y-4 pr-2">
           {messages.map((m, idx) => (
@@ -140,7 +139,7 @@ export default function ClinicalBot() {
               }`}
             >
               {m.sender === 'bot' && (
-                <div className="w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400 flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-lg bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98] flex-shrink-0 mt-1">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
@@ -148,8 +147,8 @@ export default function ClinicalBot() {
               <div
                 className={`max-w-[85%] rounded-2xl p-4 text-xs ${
                   m.sender === 'user'
-                    ? 'bg-gradient-to-r from-sky-600 to-sky-700 text-white rounded-br-none shadow-md shadow-sky-600/20'
-                    : 'bg-slate-900/90 border border-white/10 text-slate-200 rounded-bl-none shadow-sm'
+                    ? 'bg-[#05AD98] text-white rounded-br-none shadow-sm'
+                    : 'bg-gray-50 border border-gray-200 text-gray-800 rounded-bl-none shadow-2xs'
                 }`}
               >
                 {m.sender === 'user' ? (
@@ -160,7 +159,7 @@ export default function ClinicalBot() {
               </div>
 
               {m.sender === 'user' && (
-                <div className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-lg bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-700 flex-shrink-0 mt-1">
                   <User className="w-4 h-4" />
                 </div>
               )}
@@ -169,11 +168,11 @@ export default function ClinicalBot() {
 
           {loading && (
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400 flex-shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98] flex-shrink-0">
                 <Bot className="w-4 h-4" />
               </div>
-              <div className="p-3.5 rounded-2xl bg-slate-900 border border-white/10 text-xs text-slate-400 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+              <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-xs text-gray-500 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#05AD98] animate-pulse" />
                 <span>Consulting local clinical intelligence knowledge base...</span>
               </div>
             </div>
@@ -182,7 +181,7 @@ export default function ClinicalBot() {
         </div>
 
         {/* Query Input Bar */}
-        <form onSubmit={handleSend} className="mt-4 pt-3 border-t border-white/10 flex gap-2">
+        <form onSubmit={handleSend} className="mt-4 pt-3 border-t border-gray-100 flex gap-2">
           <input
             type="text"
             value={inputQuery}
@@ -201,10 +200,9 @@ export default function ClinicalBot() {
         </form>
       </div>
 
-      <div className="text-center text-[11px] text-slate-500">
+      <div className="text-center text-[11px] text-gray-400">
         Local clinical Q&A database &bull; Zero external API / Gemini keys required &bull; Formatted for educational & triage research
       </div>
     </div>
   );
 }
-

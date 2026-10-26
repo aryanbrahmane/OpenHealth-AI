@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Dashboard from './pages/Dashboard';
@@ -10,11 +10,11 @@ import VivaMetrics from './pages/VivaMetrics';
 import { fetchHealth } from './services/api';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('dashboard');
-  const [selectedDisease, setSelectedDisease] = useState('diabetes');
-  const [systemOnline, setSystemOnline] = useState(false);
+  const [activeTab, setActiveTab] = React.useState('dashboard');
+  const [selectedDisease, setSelectedDisease] = React.useState('diabetes');
+  const [systemOnline, setSystemOnline] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Check backend health
     fetchHealth()
       .then(data => {
@@ -26,7 +26,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col justify-between selection:bg-sky-500/30 selection:text-sky-200">
+    <div className="min-h-screen flex flex-col justify-between bg-[#F8FAFB] text-slate-800">
       <Navbar 
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
@@ -54,9 +54,7 @@ export default function App() {
         )}
 
         {activeTab === 'diet' && (
-          <DietLifestyle 
-            defaultCondition={selectedDisease} 
-          />
+          <DietLifestyle />
         )}
 
         {activeTab === 'chatbot' && (
@@ -64,7 +62,7 @@ export default function App() {
         )}
 
         {activeTab === 'viva-metrics' && (
-          <VivaMetrics />
+          <VivaMetrics setActiveTab={setActiveTab} />
         )}
       </main>
 
@@ -72,4 +70,3 @@ export default function App() {
     </div>
   );
 }
-

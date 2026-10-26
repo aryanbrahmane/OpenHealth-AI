@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230284c7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2305AD98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OpenHealth AI &bull; Intelligent Multi-Disease Diagnostics & Clinical Intelligence</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,21 +11,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: 'class',
         theme: {
           extend: {
             colors: {
-              primary: '#0284c7',
-              darkBg: '#090d16',
+              teal: {
+                50: '#F0FDFB',
+                100: '#E6F7F5',
+                200: '#C2EFEB',
+                300: '#8AE2D8',
+                400: '#48CEC0',
+                500: '#05AD98',
+                600: '#048C7A',
+                700: '#036E60',
+                800: '#025349',
+                900: '#023E37',
+              },
+              softgray: {
+                DEFAULT: '#BBBFBF',
+                light: '#E5E7EB',
+                mid: '#878787',
+                dark: '#4B5563',
+              }
             }
           }
         }
       }
     </script>
   </head>
-  <body>
+  <body class="bg-[#F8FAFB] text-slate-800 antialiased selection:bg-[#05AD98]/20 selection:text-[#05AD98]">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-

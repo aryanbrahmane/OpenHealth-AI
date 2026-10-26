@@ -56,14 +56,14 @@ for idx, (disease, payload) in enumerate(test_cases, start=3):
     print(f"[PASS] {idx}. Prediction: {disease.capitalize()} (Prob: {pred_res['probability']}%, Level: {pred_res['risk_level']})")
 
 # 9. Brain MRI Scan
-res = client.post('/api/mri/analyze', json={'sample_name': '1.jpg'})
+res = client.post('/api/mri/analyze', json={'sample_name': 'mri_glioma_tumor.jpg'})
 assert res.status_code == 200, f"MRI failed: {res.status_code}"
 mri_res = res.get_json()
 assert 'prediction' in mri_res and 'confidence' in mri_res
 print(f"[PASS] 9. Brain MRI Computer Vision (Result: {mri_res['prediction']}, Confidence: {mri_res['confidence']}%)")
 
 # 10. Chest X-Ray Scan
-res = client.post('/api/xray/analyze', json={'sample_name': '1.jpg'})
+res = client.post('/api/xray/analyze', json={'sample_name': 'xray_pneumonia_bacterial.jpeg'})
 assert res.status_code == 200, f"X-Ray failed: {res.status_code}"
 xray_res = res.get_json()
 assert 'prediction' in xray_res

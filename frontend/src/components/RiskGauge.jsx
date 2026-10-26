@@ -8,30 +8,30 @@ export default function RiskGauge({ probability = 0, isRisk = false, riskLevel =
   const circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (prob / 100) * circumference;
 
-  let strokeColor = '#10b981';
-  let glowColor = 'rgba(16, 185, 129, 0.3)';
-  let textColor = 'text-emerald-400';
-  let badgeBg = 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400';
+  let strokeColor = '#05AD98';
+  let glowColor = 'rgba(5, 173, 152, 0.25)';
+  let textColor = 'text-[#05AD98]';
+  let badgeBg = 'bg-[#E6F7F5] border-[#05AD98]/30 text-[#048C7A]';
 
   if (prob >= 70) {
-    strokeColor = '#f43f5e';
-    glowColor = 'rgba(244, 63, 94, 0.35)';
-    textColor = 'text-rose-400';
-    badgeBg = 'bg-rose-500/10 border-rose-500/30 text-rose-400';
+    strokeColor = '#EF4444';
+    glowColor = 'rgba(239, 68, 68, 0.25)';
+    textColor = 'text-rose-600';
+    badgeBg = 'bg-rose-50 border-rose-200 text-rose-700';
   } else if (prob >= 40) {
-    strokeColor = '#f59e0b';
-    glowColor = 'rgba(245, 158, 11, 0.3)';
-    textColor = 'text-amber-400';
-    badgeBg = 'bg-amber-500/10 border-amber-500/30 text-amber-400';
+    strokeColor = '#F59E0B';
+    glowColor = 'rgba(245, 158, 11, 0.25)';
+    textColor = 'text-amber-600';
+    badgeBg = 'bg-amber-50 border-amber-200 text-amber-700';
   }
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-slate-950/70 rounded-2xl border border-white/[0.08] shadow-2xl relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center p-6 bg-white rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
       <div className="relative flex items-center justify-center my-1">
         <svg height={radius * 2} width={radius * 2} className="transform -rotate-90">
           {/* Base track */}
           <circle
-            stroke="rgba(255, 255, 255, 0.06)"
+            stroke="#E5E7EB"
             fill="transparent"
             strokeWidth={strokeWidth}
             r={normalizedRadius}
@@ -47,7 +47,7 @@ export default function RiskGauge({ probability = 0, isRisk = false, riskLevel =
             style={{ 
               strokeDashoffset, 
               transition: 'stroke-dashoffset 0.9s cubic-bezier(0.16, 1, 0.3, 1)',
-              filter: `drop-shadow(0 0 10px ${glowColor})`
+              filter: `drop-shadow(0 0 6px ${glowColor})`
             }}
             strokeLinecap="round"
             r={normalizedRadius}
@@ -58,20 +58,25 @@ export default function RiskGauge({ probability = 0, isRisk = false, riskLevel =
 
         {/* Center Readout */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-          <span className={`text-3xl font-black font-mono tracking-tight ${textColor}`}>
+          <span className="text-2xl font-black tracking-tight text-gray-900 font-mono">
             {prob.toFixed(1)}%
           </span>
-          <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">
-            Probability Index
+          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+            Probability
           </span>
         </div>
       </div>
 
-      <div className="mt-4 text-center">
-        <span className={`inline-block px-3.5 py-1 rounded-full text-[11px] font-bold border tracking-wider uppercase ${badgeBg}`}>
-          {riskLevel}
-        </span>
+      {/* Risk Badge */}
+      <div className={`mt-3 px-3 py-1 rounded-full border text-xs font-bold tracking-wide uppercase ${badgeBg}`}>
+        {riskLevel}
       </div>
+
+      <p className="text-[11px] text-gray-500 mt-2 text-center max-w-[200px]">
+        {isRisk 
+          ? 'Physiological biomarkers indicate elevated pathological classification.' 
+          : 'Values fall within calibrated baseline physiological limits.'}
+      </p>
     </div>
   );
 }
