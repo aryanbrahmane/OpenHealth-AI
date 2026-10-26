@@ -278,7 +278,7 @@ export default function VivaMetrics() {
                     </div>
                   ))
                 ) : (
-                  <p className="text-xs text-slate-400 py-4">Feature importance data computed during training.</p>
+                  <p className="text-xs text-slate-500 py-4 font-medium">Feature importance data computed during training.</p>
                 )}
               </div>
             </div>

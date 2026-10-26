@@ -325,7 +325,7 @@ export default function Radiology() {
 
               {/* Primary Diagnostic Finding */}
               <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2 shadow-xs">
-                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
                   Impression & Diagnosis
                 </span>
                 <div className="text-2xl font-black text-slate-900 tracking-tight">

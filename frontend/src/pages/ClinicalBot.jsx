@@ -205,7 +205,7 @@ export default function ClinicalBot() {
         </form>
       </div>
 
-      <div className="text-center text-[11px] text-slate-400">
+      <div className="text-center text-[11px] text-slate-500 font-medium">
         Local clinical Q&A database &bull; Zero external API / Gemini keys required &bull; Formatted for educational & triage research
       </div>
     </div>

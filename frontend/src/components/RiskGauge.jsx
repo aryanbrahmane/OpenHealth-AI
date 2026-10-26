@@ -58,10 +58,10 @@ export default function RiskGauge({ probability = 0, isRisk = false, riskLevel =
 
         {/* Center Readout */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-          <span className="text-2xl font-black tracking-tight text-gray-900 font-mono">
+          <span className="text-2xl font-black tracking-tight text-slate-900 font-mono">
             {prob.toFixed(1)}%
           </span>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
             Probability
           </span>
         </div>
@@ -72,7 +72,7 @@ export default function RiskGauge({ probability = 0, isRisk = false, riskLevel =
         {riskLevel}
       </div>
 
-      <p className="text-[11px] text-gray-500 mt-2 text-center max-w-[200px]">
+      <p className="text-[11px] text-slate-600 mt-2 text-center max-w-[200px] font-medium">
         {isRisk 
           ? 'Physiological biomarkers indicate elevated pathological classification.' 
           : 'Values fall within calibrated baseline physiological limits.'}

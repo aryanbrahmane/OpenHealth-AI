@@ -233,8 +233,8 @@ export default function Dashboard({ setActiveTab, setSelectedDisease }) {
                   <h3 className="text-base font-bold text-slate-900 group-hover:text-[#0D9488] transition mb-1">
                     {d.name}
                   </h3>
-                  <div className="text-[10px] font-mono text-slate-400 mb-2 flex items-center gap-1">
-                    <Database className="w-3 h-3 text-slate-400" />
+                  <div className="text-[10px] font-mono text-slate-500 mb-2 flex items-center gap-1 font-medium">
+                    <Database className="w-3 h-3 text-slate-500" />
                     <span>{d.dataset}</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
