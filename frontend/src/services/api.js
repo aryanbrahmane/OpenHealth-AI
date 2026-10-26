@@ -1,8 +1,10 @@
 /**
  * API Service for OpenHealth AI REST Endpoints
+ * Supports configurable backend URL via Vite env VITE_API_URL, defaulting to relative '/api'
  */
 
-const API_BASE = '/api';
+const BACKEND_URL = import.meta.env.VITE_API_URL || '';
+const API_BASE = `${BACKEND_URL}/api`;
 
 export async function fetchHealth() {
   const res = await fetch(`${API_BASE}/health`);
@@ -41,7 +43,14 @@ export async function analyzeXray(formData) {
 
 export async function fetchSamples() {
   const res = await fetch(`${API_BASE}/samples`);
-  return res.json();
+  const data = await res.json();
+  if (data.samples && BACKEND_URL) {
+    data.samples = data.samples.map(s => ({
+      ...s,
+      url: s.url.startsWith('http') ? s.url : `${BACKEND_URL}${s.url}`
+    }));
+  }
+  return data;
 }
 
 export async function fetchDiet(condition = 'diabetes', subtype = 'Standard Clinical') {
@@ -67,4 +76,3 @@ export async function fetchMetrics() {
   const res = await fetch(`${API_BASE}/metrics`);
   return res.json();
 }
-

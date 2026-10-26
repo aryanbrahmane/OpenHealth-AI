@@ -259,7 +259,7 @@ export default function Dashboard({ setActiveTab, setSelectedDisease }) {
             <Scan className="w-4 h-4 text-[#F97316]" />
             <span>PACS Computer Vision Workstation</span>
           </div>
-          <h3 className="text-xl font-bold text-white">Brain MRI Tumour Detection & Chest X-Ray Triage</h3>
+          <h3 className="text-xl font-bold text-black">Brain MRI Tumour Detection & Chest X-Ray Triage</h3>
           <p className="text-xs text-slate-300 leading-relaxed">
             Evaluates verified MRI scans (Glioma, Meningioma, Pituitary, Normal) and Chest X-Rays (Bacterial Pneumonia, Radiolucent Normal) with interactive PACS filters (Raw, Contrast Enhancement, Inverted Negative).
           </p>

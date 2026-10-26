@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: openhealth-backend
+    env: python
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "gunicorn backend.app:app"
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
