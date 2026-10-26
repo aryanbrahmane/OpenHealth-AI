@@ -42,7 +42,7 @@ export default function VivaMetrics() {
   return (
     <div className="space-y-8">
       {/* Page Header */}
-      <div className="glass-panel p-8 bg-gradient-to-r from-white via-[#F9FAFB] to-[#E6F7F5]/50 border-gray-200">
+      <div className="glass-panel p-8 bg-linear-to-r from-white via-[#F9FAFB] to-[#E6F7F5]/50 border-gray-200">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F7F5] border border-[#05AD98]/30 text-[#048C7A] text-xs font-bold uppercase tracking-wider">
@@ -58,7 +58,7 @@ export default function VivaMetrics() {
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white border border-[#05AD98]/30 text-center flex-shrink-0 shadow-xs">
+          <div className="p-4 rounded-2xl bg-white border border-[#05AD98]/30 text-center shrink-0 shadow-xs">
             <span className="text-[11px] font-semibold text-[#048C7A] uppercase tracking-widest block mb-1">
               Overall Benchmark Rating
             </span>
@@ -269,7 +269,7 @@ export default function VivaMetrics() {
                       </div>
                       <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#05AD98] to-[#48CEC0]"
+                          className="h-full rounded-full bg-linear-to-r from-[#05AD98] to-[#48CEC0]"
                           style={{ width: `${Math.min(100, imp * 3)}%` }}
                         />
                       </div>
@@ -377,7 +377,7 @@ export default function VivaMetrics() {
                     className="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50 transition"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-full bg-[#E6F7F5] text-[#05AD98] text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      <span className="w-6 h-6 rounded-full bg-[#E6F7F5] text-[#05AD98] text-xs font-bold flex items-center justify-center shrink-0">
                         {idx + 1}
                       </span>
                       <div>
@@ -390,9 +390,9 @@ export default function VivaMetrics() {
                       </div>
                     </div>
                     {isExpanded ? (
-                      <ChevronUp className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                      <ChevronUp className="w-4 h-4 text-gray-500 shrink-0" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                      <ChevronDown className="w-4 h-4 text-gray-500 shrink-0" />
                     )}
                   </button>
 

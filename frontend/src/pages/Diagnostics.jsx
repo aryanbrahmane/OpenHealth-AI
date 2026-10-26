@@ -170,7 +170,7 @@ export default function Diagnostics({
 
       {error && (
         <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center gap-3">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-600" />
+          <AlertCircle className="w-5 h-5 shrink-0 text-rose-600" />
           <span>{error}</span>
         </div>
       )}
@@ -279,7 +279,7 @@ export default function Diagnostics({
         {/* Right Panel: Output Report */}
         <div className="lg:col-span-5 space-y-6">
           {result ? (
-            <div className="glass-panel p-6 space-y-6 border-[#05AD98]/40 bg-gradient-to-br from-white to-[#E6F7F5]/30">
+            <div className="glass-panel p-6 space-y-6 border-[#05AD98]/40 bg-linear-to-br from-white to-[#E6F7F5]/30">
               <div className="flex items-center justify-between pb-3 border-b border-gray-100">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#05AD98]">
                   Diagnostic Evaluation Summary

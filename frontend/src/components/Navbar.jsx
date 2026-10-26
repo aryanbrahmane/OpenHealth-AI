@@ -31,7 +31,7 @@ export default function Navbar({ activeTab, setActiveTab, systemOnline }) {
           onClick={() => setActiveTab('dashboard')} 
           className="flex items-center gap-3 cursor-pointer select-none group"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#05AD98] via-[#048C7A] to-[#8AE2D8] p-[1.5px] shadow-md shadow-[#05AD98]/20 group-hover:shadow-[#05AD98]/40 transition duration-300">
+          <div className="w-10 h-10 rounded-xl bg-linear-to-tr from-[#05AD98] via-[#048C7A] to-[#8AE2D8] p-[1.5px] shadow-md shadow-[#05AD98]/20 group-hover:shadow-[#05AD98]/40 transition duration-300">
             <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
               <Activity className="w-5 h-5 text-[#05AD98] group-hover:scale-110 transition duration-300" />
             </div>

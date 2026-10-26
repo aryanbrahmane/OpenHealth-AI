@@ -139,7 +139,7 @@ export default function ClinicalBot() {
               }`}
             >
               {m.sender === 'bot' && (
-                <div className="w-8 h-8 rounded-lg bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98] flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-lg bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98] shrink-0 mt-1">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
@@ -159,7 +159,7 @@ export default function ClinicalBot() {
               </div>
 
               {m.sender === 'user' && (
-                <div className="w-8 h-8 rounded-lg bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-700 flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-lg bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-700 shrink-0 mt-1">
                   <User className="w-4 h-4" />
                 </div>
               )}
@@ -168,7 +168,7 @@ export default function ClinicalBot() {
 
           {loading && (
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98] flex-shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-[#E6F7F5] border border-[#05AD98]/30 flex items-center justify-center text-[#05AD98] shrink-0">
                 <Bot className="w-4 h-4" />
               </div>
               <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-xs text-gray-500 flex items-center gap-2">
@@ -192,7 +192,7 @@ export default function ClinicalBot() {
           <button
             type="submit"
             disabled={loading || !inputQuery.trim()}
-            className="btn-primary px-5 flex-shrink-0"
+            className="btn-primary px-5 shrink-0"
           >
             <Send className="w-4 h-4" />
             <span className="hidden sm:inline">Send Query</span>

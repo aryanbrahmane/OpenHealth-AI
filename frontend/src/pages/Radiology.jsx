@@ -146,7 +146,7 @@ export default function Radiology() {
 
       {error && (
         <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center gap-3">
-          <AlertTriangle className="w-5 h-5 flex-shrink-0 text-rose-600" />
+          <AlertTriangle className="w-5 h-5 shrink-0 text-rose-600" />
           <span>{error}</span>
         </div>
       )}
@@ -203,7 +203,7 @@ export default function Radiology() {
             </div>
 
             {/* Display Viewport */}
-            <div className="pacs-canvas aspect-square max-h-[390px] w-full flex items-center justify-center relative">
+            <div className="pacs-canvas aspect-square max-h-97.5 w-full flex items-center justify-center relative">
               {previewUrl ? (
                 <img
                   src={previewUrl}
@@ -228,8 +228,8 @@ export default function Radiology() {
 
               {/* Crosshair Overlay */}
               <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-[#05AD98]/30" />
-                <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#05AD98]/30" />
+                <div className="absolute top-1/2 left-0 right-0 h-px bg-[#05AD98]/30" />
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#05AD98]/30" />
               </div>
             </div>
 
@@ -251,7 +251,7 @@ export default function Radiology() {
                         : 'border-gray-200 hover:border-gray-300 bg-white'
                     }`}
                   >
-                    <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-black border border-gray-200">
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-black border border-gray-200">
                       <img src={s.url} alt={s.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="overflow-hidden">
@@ -300,7 +300,7 @@ export default function Radiology() {
         {/* Right: Hospital-Grade Radiology Report */}
         <div className="lg:col-span-5 space-y-6">
           {result ? (
-            <div className="glass-panel p-6 space-y-6 border-[#05AD98]/30 bg-gradient-to-br from-white to-[#E6F7F5]/30">
+            <div className="glass-panel p-6 space-y-6 border-[#05AD98]/30 bg-linear-to-br from-white to-[#E6F7F5]/30">
               <div className="flex items-center justify-between pb-3 border-b border-gray-100">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-[#05AD98] block">

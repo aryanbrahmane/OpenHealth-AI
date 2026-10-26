@@ -86,7 +86,7 @@ export default function DietLifestyle({ defaultCondition = 'diabetes' }) {
       {plan && (
         <div className="space-y-8">
           {/* Plan Title Banner */}
-          <div className="glass-panel p-6 bg-gradient-to-r from-white via-[#F9FAFB] to-[#E6F7F5]/40 border-gray-200">
+          <div className="glass-panel p-6 bg-linear-to-r from-white via-[#F9FAFB] to-[#E6F7F5]/40 border-gray-200">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="text-xs font-semibold text-[#048C7A] uppercase tracking-wider">
@@ -121,13 +121,13 @@ export default function DietLifestyle({ defaultCondition = 'diabetes' }) {
             {/* Foods to Eat */}
             <div className="glass-panel p-6 space-y-4 border-[#05AD98]/30 bg-white">
               <div className="flex items-center gap-2 text-[#05AD98] pb-3 border-b border-gray-100">
-                <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 shrink-0" />
                 <h3 className="text-base font-bold text-gray-900">Beneficial Foods to Prioritize</h3>
               </div>
               <ul className="space-y-3">
                 {plan.foods_to_eat?.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2.5 text-xs text-gray-700 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#05AD98] mt-1.5 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#05AD98] mt-1.5 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -137,13 +137,13 @@ export default function DietLifestyle({ defaultCondition = 'diabetes' }) {
             {/* Foods to Avoid */}
             <div className="glass-panel p-6 space-y-4 border-rose-200 bg-white">
               <div className="flex items-center gap-2 text-rose-600 pb-3 border-b border-gray-100">
-                <XCircle className="w-5 h-5 flex-shrink-0" />
+                <XCircle className="w-5 h-5 shrink-0" />
                 <h3 className="text-base font-bold text-gray-900">Foods & Compounds to Restrict</h3>
               </div>
               <ul className="space-y-3">
                 {plan.foods_to_avoid?.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2.5 text-xs text-gray-700 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}

@@ -87,7 +87,7 @@ export default function Dashboard({ setActiveTab, setSelectedDisease }) {
   return (
     <div className="space-y-10">
       {/* Hero Banner */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white via-[#F9FAFB] to-[#E6F7F5]/50 border border-gray-200 p-8 lg:p-12 shadow-sm">
+      <section className="relative overflow-hidden rounded-3xl bg-linear-to-br from-white via-[#F9FAFB] to-[#E6F7F5]/50 border border-gray-200 p-8 lg:p-12 shadow-sm">
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F7F5] border border-[#05AD98]/30 text-[#048C7A] text-xs font-semibold uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-[#05AD98] animate-ping" />
@@ -234,7 +234,7 @@ export default function Dashboard({ setActiveTab, setSelectedDisease }) {
       </section>
 
       {/* Radiology PACS Highlight Banner */}
-      <section className="glass-panel p-8 bg-gradient-to-r from-white via-white to-[#E6F7F5]/40 border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <section className="glass-panel p-8 bg-linear-to-r from-white via-white to-[#E6F7F5]/40 border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="space-y-2 max-w-xl">
           <div className="inline-flex items-center gap-2 text-xs font-bold text-[#05AD98] uppercase tracking-wider">
             <Scan className="w-4 h-4" />
@@ -247,7 +247,7 @@ export default function Dashboard({ setActiveTab, setSelectedDisease }) {
         </div>
         <button 
           onClick={() => setActiveTab('radiology')}
-          className="btn-primary flex-shrink-0"
+          className="btn-primary shrink-0"
         >
           <Scan className="w-4 h-4" />
           <span>Open Imaging PACS</span>
