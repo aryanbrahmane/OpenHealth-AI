@@ -277,3 +277,4 @@ Use this sequential flow when demonstrating the project in a viva, conference, o
 
 ### Q6: What are the benefits of a decoupled full-stack architecture?
 **Answer**: Decoupling the React single-page application from the Flask API allows independent scaling, deployment, and testing. The frontend is served worldwide through low-latency edge CDN caches on Vercel, while the backend microservice runs securely on Render with Gunicorn WSGI workers, communicating solely via authenticated REST JSON payloads.
+

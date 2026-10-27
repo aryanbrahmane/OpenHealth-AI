@@ -1,10 +1,12 @@
 /**
  * API Service for OpenHealth AI REST Endpoints
- * Supports configurable backend URL via Vite env VITE_API_URL, defaulting to relative '/api'
+ * Sanitizes base URL to prevent double slashes and normalizes image URLs
  */
 
-const BACKEND_URL = import.meta.env.VITE_API_URL || '';
-const API_BASE = `${BACKEND_URL}/api`;
+const rawUrl = (import.meta.env.VITE_API_URL || '').trim();
+// Strip trailing slashes so `${BACKEND_URL}/api` is always clean
+const BACKEND_URL = rawUrl.replace(/\/+$/, '');
+const API_BASE = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
 export async function fetchHealth() {
   const res = await fetch(`${API_BASE}/health`);
@@ -45,10 +47,13 @@ export async function fetchSamples() {
   const res = await fetch(`${API_BASE}/samples`);
   const data = await res.json();
   if (data.samples && BACKEND_URL) {
-    data.samples = data.samples.map(s => ({
-      ...s,
-      url: s.url.startsWith('http') ? s.url : `${BACKEND_URL}${s.url}`
-    }));
+    data.samples = data.samples.map(s => {
+      const cleanUrl = s.url.startsWith('/') ? s.url : `/${s.url}`;
+      return {
+        ...s,
+        url: s.url.startsWith('http') ? s.url : `${BACKEND_URL}${cleanUrl}`
+      };
+    });
   }
   return data;
 }
